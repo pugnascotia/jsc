@@ -1,0 +1,46 @@
+{
+  "name": "jsc",
+  "version": "1.0.0",
+  "description": "JavaScript Compiler",
+  "main": "lib/index.js",
+  "bin": {
+    "jsc": "lib/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./lib/*.js ./test/*.js"
+  },
+  "keywords": [
+    "javascript",
+    "compiler",
+    "webpack",
+    "minify",
+    "uglify",
+    "concatenate",
+    "babel",
+    "browserify"
+  ],
+  "author": "Rory Hunter <roryhunter2@gmail.com>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "eslint": "^1.10.3"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "babel-core": "^6.4.5",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-react-transform": "^2.0.0",
+    "chalk": "^1.1.1",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "glob": "^6.0.4",
+    "less": "^2.6.0",
+    "less-loader": "^2.2.2",
+    "meow": "^3.7.0",
+    "q": "^1.4.1",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.12",
+    "webpack-dev-server": "^1.14.1"
+  },
+  "private": true
+}
