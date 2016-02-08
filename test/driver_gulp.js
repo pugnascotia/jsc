@@ -17,10 +17,20 @@ describe('Gulp driver', function() {
 
   it('should concatenate multiple files', function(done) {
 
-    var args = `-o - test/gulp/a.js test/gulp/b.js`;
+    var args = 'test/gulp/a.js test/gulp/b.js';
 
     compile(args, function(stdout) {
       assert.equal(stdout.trim(), "'a';\n'b';");
+      done();
+    });
+  });
+
+  it('should uglify the output', function(done) {
+
+    var args = '-u test/gulp/c.js test/gulp/d.js';
+
+    compile(args, function(stdout) {
+      assert.equal(stdout.trim(), 'var longFunctionName=function(n){console.log(n)};longFunctionName("a string");');
       done();
     });
   });
