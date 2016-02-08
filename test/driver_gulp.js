@@ -1,10 +1,9 @@
 var assert = require('assert');
 var cp = require('child_process');
-var compiler = require('../lib/index.js');
 
 function compile(args, cb) {
-  cp.exec('lib/cli.js ' + args, { encoding: 'utf8' }, function(error, stdout, stderr) {
-    assert.ok(error == null, 'Exited non-zero');
+  cp.exec('lib/cli.js ' + args, { encoding: 'utf8' }, function(error, stdout) {
+    assert.ok(error === null, 'Exited non-zero');
     cb(stdout);
   });
 }
@@ -20,7 +19,7 @@ describe('Gulp driver', function() {
     var args = 'test/gulp/a.js test/gulp/b.js';
 
     compile(args, function(stdout) {
-      assert.equal(stdout.trim(), "'a';\n'b';");
+      assert.equal(stdout.trim(), '\'a\';\n\'b\';');
       done();
     });
   });

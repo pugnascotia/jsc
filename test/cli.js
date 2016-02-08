@@ -50,6 +50,14 @@ describe('Command line processing', function() {
       assert.equal(result.output, expected);
     });
 
+    it('should not normalize an absolute output path', function() {
+      var result = cli.normalizeConfig({ output: '/src/main/output.js' });
+
+      var expected = '/src/main/output.js';
+
+      assert.equal(result.output, expected);
+    });
+
     it('should perform deep pathname expansion', function(done) {
       // Hack to ensure we have the correct expected path - it's the root
       // of the module, not the __dirname
