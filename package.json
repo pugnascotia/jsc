@@ -7,8 +7,8 @@
     "jsc": "lib/cli.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./lib/*.js ./test/*.js"
+    "test": "mocha test/*.js",
+    "lint": "eslint ./lib/**/*.js ./test/**/*.js"
   },
   "keywords": [
     "javascript",
@@ -23,7 +23,8 @@
   "author": "Rory Hunter <roryhunter2@gmail.com>",
   "license": "GPL-3.0",
   "devDependencies": {
-    "eslint": "^1.10.3"
+    "eslint": "^1.10.3",
+    "mocha": "^2.4.5"
   },
   "dependencies": {
     "async": "^1.5.2",
