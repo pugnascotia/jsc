@@ -30,17 +30,18 @@ describe('Command line processing', function() {
         done();
       });
     });
+
   });
 
-  describe('Processing arguments', function() {
+  describe('Argument processing', function() {
+
     it('should default output to "-"', function() {
       var result = cli.normalizeConfig({});
-
       assert.equal(result.output, '-', 'output not defaulted to "-"');
     });
 
     it('should normalize the output path', function() {
-      var result = cli.normalizeConfig({output: 'src/main/output.js'});
+      var result = cli.normalizeConfig({ output: 'src/main/output.js' });
 
       // Hack to ensure we have the correct expected path - it's the root
       // of the module, not the __dirname
@@ -48,6 +49,21 @@ describe('Command line processing', function() {
 
       assert.equal(result.output, expected);
     });
+
+    it('should perform deep pathname expansion', function(done) {
+      // Hack to ensure we have the correct expected path - it's the root
+      // of the module, not the __dirname
+      var expected = path.normalize(path.join(__dirname, 'cli/subdir/testStub.js'));
+
+      return cli.expandPaths([ 'test/cli/**/*.js' ])
+        .then(function(expanded) {
+          assert.equal(expanded.length, 1, 'Wrong number of expanded paths returned');
+          assert.equal(expanded[0], expected);
+        })
+        .then(done)
+        .catch(done);
+    });
+
   });
 
 });
