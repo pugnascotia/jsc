@@ -5,7 +5,8 @@ var tmp = require('tmp');
 
 function compile(args, cb) {
 
-  var output = tmp.tmpNameSync();
+  // Needed or else uglification doesn't work
+  var output = tmp.tmpNameSync({ postfix: '.js' });
 
   var cmd = `lib/cli.js -o ${output} ${args}`;
 
@@ -49,6 +50,15 @@ describe('Webpack driver', function() {
 
     compile(args, function(stdout) {
       assert.ok(/webpackBootstrap/.test(stdout), 'Output doesn\'t look like a bundle');
+      done();
+    });
+  });
+
+  it('should uglify bundles with --uglify', function(done) {
+    var args = '--bundle --uglify test/webpack/a.js';
+
+    compile(args, function(bundle) {
+      assert.ok(/\/\/# sourceMappingURL=.*?\.js\.map$/.test(bundle.trim()), 'Output doesn\'t look like a bundle');
       done();
     });
   });
