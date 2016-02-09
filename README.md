@@ -13,30 +13,30 @@ getting started without first having to configure a complete toolchain.
 
 Join your files together:
 
-    `jsc app/**/*.js > dist.js`
+    jsc app/**/*.js > dist.js
 
 or:
 
-    `jsc -o dist.js app/**/*.js`
+    jsc -o dist.js app/**/*.js
 
 With minification:
 
-    `jsc -u -o dist.js app/**/*.js`
+    jsc -u -o dist.js app/**/*.js
 
 
 ### Bundling
 
 Generate a bundle of your code and its `npm` dependencies:
 
-    `jsc -o bundle.js --bundle app/index.js`
+    jsc -o bundle.js --bundle app/index.js
 
 With minification:
 
-    `jsc -o bundle.js --uglify --bundle app/index.js`
+    jsc -o bundle.js --uglify --bundle app/index.js
 
 Watch for changes and rebuild as required:
 
-    `jsc -o bundle.js --watch --bundle app/index.js`
+    jsc -o bundle.js --watch --bundle app/index.js
 
 ## Implementation
 
